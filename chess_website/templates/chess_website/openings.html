@@ -1,0 +1,14 @@
+{% extends "chess_website/layouts.html" %}
+
+
+{% block body %}
+    <h1>{{error}}</h1>
+    <h1>Testing: Type chess.com username to get some information</h1>
+    <form action="/" method="POST">
+        {% csrf_token %}
+        <input name="name" autofocus="true">
+        <button>Submit</button>
+    </form>
+
+
+{% endblock %}
