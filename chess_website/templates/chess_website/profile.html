@@ -2,20 +2,21 @@
 
 
 {% block body %}
-    <h1>{{error}}</h1>
-    <h1>Testing: Type chess.com username to get some information</h1>
-    <form action="/" method="POST">
-        {% csrf_token %}
-        <input name="name" autofocus="true">
-        <button>Submit</button>
-    </form>
+  <h1>{{error}}</h1>
+  <h1>PROFILE Testing: Type chess.com username to get some information</h1>
+  <form action="/profile" method="POST">
+    {% csrf_token %}
+    <input name="name" autofocus="true">
+    <button>Submit</button>
+  </form>
 
-    <p>{{year}}</p>
-    <p>{{country}}</p>
+  <p>{{year}}</p>
+  <p>{{country}}</p>
 
-    <ul>
-        {% for key, value in ratings.items %}
-            <li>{{key}}: {{value.0}} W/L/D: {{value.1.0}}% / {{value.1.1}}% / {{value.1.2}}%</li>
-        {% endfor %}
-    </ul>
+  <ul>
+    {% for key, value in ratings.items %}
+      <li>{{key}}: {{value.0}} W/L/D: {{value.1.0}}% / {{value.1.1}}% / {{value.1.2}}%</li>
+    {% endfor %}
+  </ul>
+
 {% endblock %}
