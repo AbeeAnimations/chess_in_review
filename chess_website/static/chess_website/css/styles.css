@@ -3,7 +3,11 @@ body {
 }
 
 .foreground {
-    background-color: #272623;
+    background-color: #272623 !important;
     color: white;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
+.pad {
+    padding-top: 5%;
+}

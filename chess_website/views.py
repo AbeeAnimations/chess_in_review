@@ -12,7 +12,7 @@ def profile(request):
         info = getProfile(request.POST.get("name"))
         if info:
             return render(request, 'chess_website/profile.html', 
-                      {'year': info['year'], 'country': info['country'], 'ratings':info['ratings']})
+                      {'year': info['year'], 'country': info['country'], 'ratings':info['ratings'], 'name':info['name']})
         else:
             return render(request, 'chess_website/profile.html',
                            {'error': 'There was an error, retry.'})

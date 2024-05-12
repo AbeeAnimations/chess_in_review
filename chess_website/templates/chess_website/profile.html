@@ -3,54 +3,56 @@
 
 
 {% block body %}
-<div>
-  LALA LALA
-</div>
-<div class="container">
+
+<div class="container foreground mt-4 text-lg">
+
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="heading text-center">
         <h1>{{error}}</h1>
-        <h1>Profile</h1>
-        <img src="{% static 'chess_website/images/profile_icon.png'  %}" alt="profile icon">
+        <h1>Profile <img src="{% static 'chess_website/images/profile_icon.png'  %}" alt="profile icon" class="img-fluid"></h1>
       </div>
+
       <div class="text-center">
         <p>Type in your chess.com username to get your profile.</p>
       </div>
+
       <div class="text-center">
         <form action="/profile" method="POST">
           {% csrf_token %}
-          <input name="name" autofocus="true" class="form-control">
-          <button class="btn btn-primary mt-2 bg-dark">Submit</button>
+          <input name="name" autofocus="true" class="form-control" placeholder="username">
+          <button class="btn btn-primary mt-2 bg-dark pull-right">Submit</button>
         </form>
       </div>
-      <div>
-        {% if year %}
-          <p>You made your chess.com account on {{year}}.</p>
-        {% endif %}
+    </div>
+  </div>
 
-        {% if country %}
-          <p>You are based in {{country}}.</p>
-        {% endif %}
-        
-        {% for key, value in ratings.items %}
-          <p>{{key}}: {{value.0}}</p>
+  <div class="pad md-5">
+    {% if year and country and name %}
+      <p class="text-center">Hello world, {{name}}! You started your journey on chess.com account on {{year}} and it seems you are from  {{country}}. Below are your ratings for blitz, rapid, and bullet. </p>
+    {% endif %}
 
+    <div class="row justify-content-center">
+      {% for key, value in ratings.items %}
+        <div class="col-md-4">
           {% if key == "Blitz" %}
+            <h3>{{key}}: {{value.0}}</h3>
             <img src="{% static 'chess_website/images/blitz_icon.png'  %}" alt="blitz time control icon">
           {% endif %}
 
           {% if key == "Rapid" %}
+            <h3>{{key}}: {{value.0}}</h3>
             <img src="{% static 'chess_website/images/rapid_icon.png'  %}" alt="blitz time control icon">
           {% endif %}
 
           {% if key == "Bullet" %}
+            <h3>{{key}}: {{value.0}}</h3>
             <img src="{% static 'chess_website/images/bullet_icon.png'  %}" alt="blitz time control icon">
           {% endif %}
 
           <p>For {{key}} you won {{value.1.0}}% of your games, lost {{value.1.1}}% of your games, and drew {{value.1.2}}% of your games.</p>
-        {% endfor %}
-      </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>

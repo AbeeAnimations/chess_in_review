@@ -55,6 +55,9 @@ def getProfile(name):
         ratings[controls_human[i]] = ratings.pop(controls[i])
 
     info['ratings'] = ratings
+
+    # Get the name
+    info['name'] = name 
     
     return info
 
@@ -78,8 +81,11 @@ def getOpenings(name):
                         else:
                             opening[ecoConversion[ecoCode]] += 1
                 
+        # Get top 5 openings
         info["top_5"] = sorted(opening.items(), key=lambda x:x[1], reverse=True)[0:5]
 
     except ChessDotComError as e:
         return None
+    
+
     return info
