@@ -50,6 +50,9 @@ def getProfile(name):
         sum = record['win']+record['loss']+record['draw']
         ratings[control] = [data['stats'][control]['last']['rating'], [round(record['win']/sum*100, 2), round(record['loss']/sum*100, 2), round(record['draw']/sum*100, 2)]]
 
+    controls_human = ['Blitz', 'Rapid', 'Bullet']
+    for i in range(3):
+        ratings[controls_human[i]] = ratings.pop(controls[i])
 
     info['ratings'] = ratings
     

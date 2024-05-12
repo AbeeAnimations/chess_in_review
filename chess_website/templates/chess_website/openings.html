@@ -1,18 +1,32 @@
 {% extends "chess_website/layouts.html" %}
+{% load static %}
 
 
 {% block body %}
-  <h1>{{error}}</h1>
-  <h1>OPENINGS Testing: Type chess.com username to get some information</h1>
-  <form action="/openings" method="POST">
-    {% csrf_token %}
-      <input name="name" autofocus="true">
-      <button>Submit</button>
-  </form>
+  <div class="heading">
+    <h1>{{error}}</h1>
+    <h1>Openings</h1>
+    <img src="{% static 'chess_website/images/openings_icon.png' %}" alt="chess openings">
+  </div>
 
-  {% for opening in top_5 %}
-    <p>{{opening.0}}, {{opening.1}}</p>
-    <br>
-  {% endfor %}
+  <div>
+    <p>Type in your chess.com username to get your top 5 openings.</p> 
+  </div>
+
+  <div>
+    <form action="/openings" method="POST">
+      {% csrf_token %}
+        <input name="name" autofocus="true">
+        <button>Submit</button>
+    </form>
+  </div>
+
+  <div>
+    <ol>
+      {% for opening in top_5 %}
+        <li>{{opening.0}}, {{opening.1}}</li>
+      {% endfor %}
+    </ol>
+  </div>
 
 {% endblock %}
