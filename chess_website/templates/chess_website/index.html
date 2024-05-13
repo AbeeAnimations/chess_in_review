@@ -1,12 +1,13 @@
 {% extends "chess_website/layouts.html" %}
+{% load static %}
 
 {% block body %}
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-md-8">
 
-      <div class="foreground text-center">
-        <h1>Chessinreview!</h1>
+      <div class="foreground heading text-center">
+        <h1>Chessinreview! <img src="{% static 'chess_website/images/chess_icon.png'  %}" alt="" class="img-fluid"></h1>
       </div>
 
       <div class="foreground p-5">
