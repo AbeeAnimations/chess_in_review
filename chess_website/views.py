@@ -3,9 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from chess_website.utils.helpers import getProfile, getOpenings
 
-# Create your views here.
+# Views
 def index(request):
     return render(request, 'chess_website/index.html')
+
 
 def profile(request):
     if request.POST.get('name'):

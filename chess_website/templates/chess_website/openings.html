@@ -3,30 +3,34 @@
 
 
 {% block body %}
-  <div class="heading">
-    <h1>{{error}}</h1>
-    <h1>Openings</h1>
-    <img src="{% static 'chess_website/images/openings_icon.png' %}" alt="chess openings">
+<div class="container foreground mt-4 text-lg">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="heading text-center">
+        <h1>{{error}}</h1>
+        <h1>Openings <img src="{% static 'chess_website/images/openings_icon.png' %}" alt="chess openings book icon" class="img-fluid"></h1>
+      </div>
+
+      <div class="text-center">
+        <p>Type in your chess.com username to get your top 5 openings.</p> 
+      </div>
+
+      <div class="text-center">
+        <form action="/openings" method="POST">
+          {% csrf_token %}
+          <input name="name" autofocus="true" class="form-control" placeholder="username">
+          <button class="btn btn-primary mt-2 bg-dark">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <p>Type in your chess.com username to get your top 5 openings.</p> 
-  </div>
-
-  <div>
-    <form action="/openings" method="POST">
-      {% csrf_token %}
-        <input name="name" autofocus="true">
-        <button>Submit</button>
-    </form>
-  </div>
-
-  <div>
+  <div class="pt-5 md-5">
     <ol>
       {% for opening in top_5 %}
         <li>{{opening.0}}, {{opening.1}}</li>
       {% endfor %}
     </ol>
   </div>
-
+</div>
 {% endblock %}

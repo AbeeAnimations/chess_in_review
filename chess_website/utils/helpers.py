@@ -3,6 +3,7 @@ from chessdotcom import *
 import requests
 import re
 
+# From ChatGPT
 pattern = re.compile(r"ECO (.*?)\]")
 
 Client.request_config["headers"]["User-Agent"] = (
@@ -82,6 +83,7 @@ def getOpenings(name):
                             opening[ecoConversion[ecoCode]] += 1
                 
         # Get top 5 openings
+        # https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
         info["top_5"] = sorted(opening.items(), key=lambda x:x[1], reverse=True)[0:5]
 
     except ChessDotComError as e:

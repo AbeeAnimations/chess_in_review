@@ -5,8 +5,8 @@
 {% block body %}
 
 <div class="container foreground mt-4 text-lg">
-
-  <div class="row justify-content-center">
+  <!--Title -->
+ <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="heading text-center">
         <h1>{{error}}</h1>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="pad md-5">
+  <div class="pt-5 md-20">
     {% if year and country and name %}
       <p class="text-center">Hello world, {{name}}! You started your journey on chess.com account on {{year}} and it seems you are from  {{country}}. Below are your ratings for blitz, rapid, and bullet. </p>
     {% endif %}
