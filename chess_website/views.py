@@ -16,7 +16,7 @@ def profile(request):
                       {'year': info['year'], 'country': info['country'], 'ratings':info['ratings'], 'name':info['name']})
         else:
             return render(request, 'chess_website/profile.html',
-                           {'error': 'There was an error, retry.'})
+                           {'error': True})
     else:
         return render(request, 'chess_website/profile.html')
     
@@ -28,7 +28,7 @@ def openings(request):
                       {'top_5': info['top_5']})
         else:
             return render(request, 'chess_website/openings.html',
-                           {'error': 'There was an error, retry.'})
+                           {'error': True})
     else:
         return render(request, 'chess_website/openings.html')
 

@@ -3,26 +3,29 @@
 
 
 {% block body %}
-
 <div class="container foreground mt-4 text-lg">
   <!--Heading and form-->
  <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="heading text-center">
-        <p>{{error}}</p>
         <h1>Profile <img src="{% static 'chess_website/images/profile_icon.png'  %}" alt="" class="img-fluid"></h1>
       </div>
 
       <div class="text-center">
         <p>Type in your chess.com username to get your profile.</p>
+        {% if error %}
+        <div class="alert alert-danger mt-5" role="alert">
+          It seems that the username you submitted does not exist or there was another problem. Please enter in a new username.
+        </div>
+        {% endif %}
       </div>
 
       <div class="text-center">
         <form action="/profile" method="POST">
           {% csrf_token %}
-          <label for="profile-form">chess.com username:</label>
+          <label for="profile-form" class="visuallyhidden">chess.com username:</label>
           <input name="name" autofocus="true" class="form-control" placeholder="username" id="profile-form">
-          <button class="btn btn-primary mt-2 bg-dark pull-right">Submit</button>
+          <button class="btn btn-primary mt-2 bg-dark">Submit</button>
         </form>
       </div>
     </div>

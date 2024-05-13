@@ -19,7 +19,7 @@
       <div class="text-center">
         <form action="/openings" method="POST">
           {% csrf_token %}
-          <label for="opening-form">chess.com username:</label>
+          <label for="opening-form" class="visuallyhidden">chess.com username:</label>
           <input name="name" autofocus="true" class="form-control" placeholder="username" id="opening-form">
           <button class="btn btn-primary mt-2 bg-dark">Submit</button>
         </form>
